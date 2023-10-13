@@ -20,10 +20,11 @@ class Nave():
         """Desenha a imagem na tela considerando seu Rect."""        
         self.tela.blit(self.imagem, self.rect)
 
-    def _atualizar_pos_nave(self, jogo):
+    def atualizar_pos_nave(self, jogo):
         direita = jogo.configuracoes.movimento_direita
         esquerda = jogo.configuracoes.movimento_esquerda
-        if direita and jogo.nave.rect.right < jogo.tela_rect.right:
+        rect = jogo.nave.rect
+        if direita and rect.right < jogo.tela_rect.right:
             jogo.nave.rect.x += jogo.configuracoes.velocidade_nave
-        if esquerda and jogo.nave.rect.x > 0:
+        if esquerda and rect.x > 0:
             jogo.nave.rect.x -= jogo.configuracoes.velocidade_nave

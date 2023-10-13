@@ -1,5 +1,6 @@
 import pygame
 import sys
+from lasers import Lasers
 
 class Eventos:
     """Classe renposável pela gestão de todos os eventos possíveis do
@@ -28,6 +29,8 @@ class Eventos:
             jogo.configuracoes.movimento_esquerda = True
         elif evento.key == pygame.K_RIGHT:
             jogo.configuracoes.movimento_direita = True
+        elif evento.key == pygame.K_SPACE:
+            self._atira_laser(jogo)
 
     def _verificar_eventos_keyup(self, evento, jogo):
         if evento.key == pygame.K_LEFT:
@@ -40,3 +43,7 @@ class Eventos:
             botao_start = jogo.botao_start.rect
             if botao_start.collidepoint(pos_mouse):
                 self.configuracoes.jogo_ativo = True
+    
+    def _atira_laser(self, jogo):
+        laser = Lasers(jogo)
+        jogo.lasers.add(laser)

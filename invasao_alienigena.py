@@ -20,6 +20,7 @@ class InvasaoAlienigena:
         # Instancia classes necessárias
         self.eventos = Eventos(self)
         self.nave = Nave(self)
+        self.lasers = pygame.sprite.Group()
 
     def rodar_jogo(self):
         """Executa o loop principal do jogo."""
@@ -38,7 +39,10 @@ class InvasaoAlienigena:
                 self.nave.desenhar()
 
             self.eventos.reagir_a_eventos(self)
-            self.nave._atualizar_pos_nave(self)
+            self.nave.atualizar_pos_nave(self)
+            for laser in self.lasers.sprites():
+                laser.desenhar()
+                laser.atualizar_pos_laser()
 
             # Atualiza a tela com as últimas atualizações de display
             pygame.display.flip()

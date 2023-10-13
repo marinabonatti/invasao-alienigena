@@ -19,4 +19,10 @@ class Configuracoes:
         
         # Atributos nave
         self.velocidade_nave = self.tela_rect.width // 450
+
+        # Atributos lasers
+        self.largura_laser = self.tela_rect.width // 300
+        self.altura_laser = self.tela_rect.height // 70
+        self.cor_laser = (255,74,173)
+        self.velocidade_laser = self.tela_rect.height // 600
         
