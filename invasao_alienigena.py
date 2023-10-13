@@ -2,6 +2,7 @@ from configuracoes import Configuracoes
 import pygame
 from botao_start import BotaoStart
 from eventos import Eventos
+from nave import Nave
 
 class InvasaoAlienigena:
     """Inicializa e faz a gestão dos atributos e métodos do jogo, assim
@@ -18,6 +19,7 @@ class InvasaoAlienigena:
 
         # Instancia classes necessárias
         self.eventos = Eventos(self)
+        self.nave = Nave(self)
 
     def rodar_jogo(self):
         """Executa o loop principal do jogo."""
@@ -31,6 +33,9 @@ class InvasaoAlienigena:
             if not self.configuracoes.jogo_ativo:
                 self.botao_start = BotaoStart(self)
                 self.botao_start.desenhar()
+
+            elif self.configuracoes.jogo_ativo:
+                self.nave.desenhar()
 
             self.eventos.reagir_a_eventos(self)
 

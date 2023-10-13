@@ -19,5 +19,7 @@ class BotaoStart:
         self.rect.center = self.tela_rect.center
 
     def desenhar(self):
+        """Desenha a imagem na tela considerando seu Rect."""
+        
         self.tela.blit(self.imagem, self.rect)
 
