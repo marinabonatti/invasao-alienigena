@@ -40,11 +40,3 @@ class Eventos:
             botao_start = jogo.botao_start.rect
             if botao_start.collidepoint(pos_mouse):
                 self.configuracoes.jogo_ativo = True
-    
-    def _atualizar_pos_nave(self, jogo):
-        if jogo.configuracoes.movimento_direita:
-            if jogo.nave.rect.right < jogo.tela_rect.right:
-                jogo.nave.rect.x += jogo.configuracoes.velocidade_nave
-        if jogo.configuracoes.movimento_esquerda:
-            if jogo.nave.rect.x > 0:
-                jogo.nave.rect.x -= jogo.configuracoes.velocidade_nave
