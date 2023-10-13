@@ -14,3 +14,9 @@ class Configuracoes:
 
         # Flags disponíveis
         self.jogo_ativo = False
+        self.movimento_direita = False
+        self.movimento_esquerda = False
+        
+        # Atributos nave
+        self.velocidade_nave = self.tela_rect.width // 450
+        

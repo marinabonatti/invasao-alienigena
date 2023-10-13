@@ -38,6 +38,7 @@ class InvasaoAlienigena:
                 self.nave.desenhar()
 
             self.eventos.reagir_a_eventos(self)
+            self.eventos._atualizar_pos_nave(self)
 
             # Atualiza a tela com as últimas atualizações de display
             pygame.display.flip()
