@@ -44,6 +44,7 @@ class InvasaoAlienigena:
                 for laser in self.lasers.sprites():
                     laser.desenhar()
                     laser.atualizar_pos_laser()
+                    laser.excluir_laser_antigo(self.lasers, laser)
 
             # Atualiza a tela com as últimas atualizações de display
             pygame.display.flip()
