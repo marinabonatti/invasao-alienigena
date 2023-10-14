@@ -7,8 +7,8 @@ class Lasers(Sprite):
 
     def __init__(self, jogo):
         """Inicializa a classe acessando atributos externos e próprios
-        importantes para o funcionamento da classe. Também cria o rect
-        do objeto e o posiciona."""
+        importantes para o seu funcionamento. Também cria e posiciona o 
+        rect do objeto."""
         super().__init__()
         self.tela = jogo.tela
         self.configuracoes = jogo.configuracoes
