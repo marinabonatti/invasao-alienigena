@@ -41,9 +41,11 @@ class InvasaoAlienigena:
         espaco_y_disponivel = self.tela_rect.height - (2 * self.altura_alien)
         espaco_y_disponivel -= self.nave.rect.height
         colunas_alien = espaco_y_disponivel // (2 * self.altura_alien)
-        for coluna in range(colunas_alien):
-            for n_alien in range(total_alien_x):
-                self._criar_alien(n_alien, coluna)
+        if len(self.aliens) == 0:
+            for coluna in range(colunas_alien):
+                for n_alien in range(total_alien_x):
+                    self._criar_alien(n_alien, coluna)
+        self.aliens.draw(self.tela)
 
 
     def rodar_jogo(self):
@@ -66,7 +68,7 @@ class InvasaoAlienigena:
                 self.nave.desenhar()
                 self.nave.atualizar_pos_nave(self)
                 self.criar_frota_alienigena()
-                self.aliens.draw(self.tela)
+                self.aliens.update()
                 for laser in self.lasers.sprites():
                     laser.desenhar()
                 self.lasers.update(self.lasers)
