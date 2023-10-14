@@ -30,19 +30,20 @@ class InvasaoAlienigena:
             # Estabelece o background
             self.tela.fill(self.configuracoes.cor_background, self.tela_rect)
 
+            self.eventos.reagir_a_eventos(self)
+
             # Disponibiliza o botão Start caso o jogo não esteja ativo
             if not self.configuracoes.jogo_ativo:
                 self.botao_start = BotaoStart(self)
                 self.botao_start.desenhar()
 
+            # Roda as funcionalidades do jogo caso ele esteja ativo
             elif self.configuracoes.jogo_ativo:
                 self.nave.desenhar()
-
-            self.eventos.reagir_a_eventos(self)
-            self.nave.atualizar_pos_nave(self)
-            for laser in self.lasers.sprites():
-                laser.desenhar()
-                laser.atualizar_pos_laser()
+                self.nave.atualizar_pos_nave(self)
+                for laser in self.lasers.sprites():
+                    laser.desenhar()
+                    laser.atualizar_pos_laser()
 
             # Atualiza a tela com as últimas atualizações de display
             pygame.display.flip()
