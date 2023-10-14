@@ -3,6 +3,7 @@ import pygame
 from botao_start import BotaoStart
 from eventos import Eventos
 from nave import Nave
+from aliens import Aliens
 
 class InvasaoAlienigena:
     """Inicializa e faz a gestão dos atributos e métodos do jogo, assim
@@ -23,6 +24,28 @@ class InvasaoAlienigena:
         self.lasers = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
 
+    def _criar_alien(self, n_alien, coluna):
+        alien = Aliens(self)
+        alien.rect.y = self.altura_alien + (2 * self.altura_alien * coluna)
+        alien.rect.x = self.largura_alien + (2 * self.largura_alien * n_alien)
+        self.aliens.add(alien)
+
+    def criar_frota_alienigena(self):
+        alien = Aliens(self)
+        self.largura_alien = alien.rect.width
+        self.altura_alien = alien.rect.height
+
+        espaco_x_disponivel = self.tela_rect.width - (2 * self.largura_alien)
+        total_alien_x = espaco_x_disponivel // (2 * self.largura_alien)
+
+        espaco_y_disponivel = self.tela_rect.height - (2 * self.altura_alien)
+        espaco_y_disponivel -= self.nave.rect.height
+        colunas_alien = espaco_y_disponivel // (2 * self.altura_alien)
+        for coluna in range(colunas_alien):
+            for n_alien in range(total_alien_x):
+                self._criar_alien(n_alien, coluna)
+
+
     def rodar_jogo(self):
         """Executa o loop principal do jogo."""
 
@@ -42,6 +65,8 @@ class InvasaoAlienigena:
             elif self.configuracoes.jogo_ativo:
                 self.nave.desenhar()
                 self.nave.atualizar_pos_nave(self)
+                self.criar_frota_alienigena()
+                self.aliens.draw(self.tela)
                 for laser in self.lasers.sprites():
                     laser.desenhar()
                 self.lasers.update(self.lasers)

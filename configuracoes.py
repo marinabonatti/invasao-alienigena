@@ -18,14 +18,14 @@ class Configuracoes:
         self.movimento_esquerda = False
         
         # Atributos nave
-        self.velocidade_nave = self.tela_rect.width // 450
+        self.velocidade_nave = self.tela_rect.width // 100
 
         # Atributos lasers
         self.largura_laser = self.tela_rect.width // 300
         self.altura_laser = self.tela_rect.height // 70
         self.cor_laser = (255,74,173)
-        self.velocidade_laser = self.tela_rect.height // 600
+        self.velocidade_laser = self.tela_rect.height // 150
 
         # Atributos aliens
-        self.velocidade_x_alien = self.tela_rect.width // 500
-        self.velocidade_y_alien = self.tela_rect.height // 250
+        self.velocidade_x_alien = self.tela_rect.width // 150
+        self.velocidade_y_alien = self.tela_rect.height // 125

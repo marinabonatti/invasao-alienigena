@@ -3,7 +3,9 @@ import pygame
 
 class Lasers(Sprite):
     """Armazena e gerencia os atributos e métodos do laser que a nave
-    lança para tentar se defender contra os alienígenas."""
+    lança para tentar se defender contra os alienígenas. Herda de Sprite,
+    portanto é necessário tomar cuidado especial com o nome de alguns
+    atributos e métodos."""
 
     def __init__(self, jogo):
         """Inicializa a classe acessando atributos externos e próprios
