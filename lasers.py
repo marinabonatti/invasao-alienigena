@@ -26,16 +26,14 @@ class Lasers(Sprite):
         Rect."""
         pygame.draw.rect(self.tela,self.cor,self.rect)
     
-    def atualizar_pos_laser(self):
+    def update(self, sprite):
         """Atualiza a posição do laser de acordo com a velocidade para
-        ele estabelecida nas configurações."""
+        ele estabelecida nas configurações. Também exclui lasers que já
+        ultrapassaram o topo da tela, para que não gastem memória e
+        processamento sem necessidade."""
         self.rect.y -= self.velocidade
-
-    def excluir_laser_antigo(self, grupo_sprite, laser):
-        """Exclui lasers que já ultrapassaram o topo da tela, para que
-        não gastem memória e processamento sem que haja necessidade."""
-        if laser.rect.bottom < 0:
-            grupo_sprite.remove(laser)
+        if self.rect.bottom < 0:
+            sprite.remove(self)
 
 
         

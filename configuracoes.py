@@ -1,5 +1,4 @@
 import pygame
-from aliens import Aliens
 
 class Configuracoes:
     """Armazena as configurações necessárias para o andamento do jogo
@@ -30,9 +29,3 @@ class Configuracoes:
         # Atributos aliens
         self.velocidade_x_alien = self.tela_rect.width // 500
         self.velocidade_y_alien = self.tela_rect.height // 250
-        
-"""
-        espaco_y_disponivel = self.tela_rect.height - (2* altura_alien)
-        espaco_y_disponivel -= jogo.nave.rect.height
-        self.numero_y_aliens = espaco_y_disponivel // (2 * altura_alien)
-        """
