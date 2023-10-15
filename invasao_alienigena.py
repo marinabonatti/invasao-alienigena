@@ -4,7 +4,7 @@ from botao_start import BotaoStart
 from eventos import Eventos
 from nave import Nave
 from aliens import Aliens
-from time import sleep
+from stats_jogo import StatsJogo
 
 class InvasaoAlienigena:
     """Faz a gestão dos atributos e métodos necessários para a execução
@@ -22,6 +22,7 @@ class InvasaoAlienigena:
         self.tela_rect = self.configuracoes.tela_rect # Rect
 
         # Instancia classes necessárias
+        self.stats = StatsJogo(self)
         self.eventos = Eventos(self)
         self.nave = Nave(self)
         self.lasers = pygame.sprite.Group()
@@ -44,7 +45,7 @@ class InvasaoAlienigena:
         espaco_y_disponivel = self.tela_rect.height - (2 * self.altura_alien)
         espaco_y_disponivel -= self.nave.rect.height
         colunas_alien = espaco_y_disponivel // (2 * self.altura_alien)
-        if len(self.aliens) == 0:
+        if len(self.aliens) == 0 and self.stats.naves_restantes > 0:
             for coluna in range(colunas_alien):
                 for n_alien in range(total_alien_x):
                     self._criar_alien(n_alien, coluna)
@@ -71,15 +72,30 @@ class InvasaoAlienigena:
         """Verifica se houve colisão entre algum alien e a nave. Se sim,
         paralisa o jogo - pois o jogador acabou de perder uma vida."""
         if pygame.sprite.spritecollideany(self.nave, self.aliens):
+            self.stats.naves_restantes -= 1
+            self.aliens.empty()
+            self.lasers.empty()
+
+            self.criar_frota_alienigena()
+            self.nave.centralizar_nave()
+
             pygame.time.wait(1000 * 7)
 
     def _verificar_alien_terra(self):
         """Verifica se algum alien encostou no chão. Se sim, paralisa o
         jogo - pois o jogador acabou de perder uma vida."""
         for alien in self.aliens.sprites():
-            if alien.rect.bottom == self.tela_rect.bottom:
+            if alien.rect.bottom >= self.tela_rect.bottom:
+                self.stats.naves_restantes -= 1
+                self.aliens.empty()
+                self.lasers.empty()
+
+                self.criar_frota_alienigena()
+                self.nave.centralizar_nave()
+
                 pygame.time.wait(1000 * 7)
-            
+                break
+
     def _verificar_colisao_aliens_lasers(self):
         """Verifica se houve colisão entre aliens e lasers. Se sim,
         ambos os membros de cada grupo envolvido na colisão serão 

@@ -14,7 +14,7 @@ class Nave():
         self.rect = self.imagem.get_rect()
 
         # Posiciona a nave no centro, na parte inferior da tela
-        self.rect.midbottom = self.tela_rect.midbottom
+        self.centralizar_nave()
 
     def desenhar(self):
         """Desenha a imagem na tela considerando seu Rect."""        
@@ -28,3 +28,6 @@ class Nave():
             jogo.nave.rect.x += jogo.configuracoes.velocidade_nave
         if esquerda and rect.x > 0:
             jogo.nave.rect.x -= jogo.configuracoes.velocidade_nave
+
+    def centralizar_nave(self):
+        self.rect.midbottom = self.tela_rect.midbottom
