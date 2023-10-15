@@ -29,17 +29,17 @@ class Configuracoes:
         self.pontuacao = 0
         self.nivel = 1
         self.naves_restantes = 2
+        self.highscore = 0
 
         self.escala_aceleracao = 1.1
         self.inicializar_configuracoes_dinamicas()
-
 
     def inicializar_configuracoes_dinamicas(self):
         """Inicializa configurações que mudam ao longo da partida."""
         self.velocidade_nave = self.tela_rect.width // 500
         self.velocidade_laser = self.tela_rect.height // 500
-        self.velocidade_x_alien = self.tela_rect.width // 700 # 400
-        self.velocidade_y_alien = self.tela_rect.height // 100 # 50
+        self.velocidade_x_alien = self.tela_rect.width // 400 # 400
+        self.velocidade_y_alien = self.tela_rect.height // 50 # 50
         self.ponto_por_alien = 50
         self.direcao_frota = 1 # Direita (1) Esquerda (-1)
 

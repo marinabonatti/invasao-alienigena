@@ -6,10 +6,10 @@ class StatsJogo:
         self.configuracoes = jogo.configuracoes
         self.pontuacao = self.configuracoes
         self.nivel = self.configuracoes.nivel
+        self.highscore = jogo.configuracoes.highscore
         self.resetar_stats()
 
     def resetar_stats(self):
         self.naves_restantes = self.configuracoes.naves_restantes
         self.pontuacao = self.configuracoes.pontuacao
         self.nivel = self.configuracoes.nivel
-        

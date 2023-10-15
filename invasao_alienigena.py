@@ -63,9 +63,12 @@ class InvasaoAlienigena:
             return True
     
     def reagir_fim_jogo(self):
+            if self.stats.pontuacao > self.stats.highscore:
+                self.stats.highscore = int(round(self.stats.pontuacao,-1))
             self.stats.resetar_stats()
             self.placar.preparar_placar()
             self.nivel.preparar_nivel()
+            self.placar.preparar_highscore()
             self.configuracoes.jogo_ativo = False
 
 
@@ -160,6 +163,7 @@ class InvasaoAlienigena:
             elif self.configuracoes.jogo_ativo:
                 self.placar.mostrar_placar()
                 self.nivel.mostrar_nivel()
+                self.placar.mostrar_highscore()
                 self.nave.desenhar()
                 self.nave.atualizar_pos_nave(self)
                 self.criar_frota_alienigena()

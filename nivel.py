@@ -25,8 +25,8 @@ class Nivel:
         self.rect = self.imagem.get_rect()
 
         espacamento = self.configuracoes.espacamento_stats
-        self.rect.right = self.placar.rect.right
-        self.rect.top = self.placar.rect.bottom
+        self.rect.right = self.placar.rect_placar.right
+        self.rect.top = self.placar.rect_placar.bottom
         self.rect.height -= espacamento
 
     def mostrar_nivel(self):
