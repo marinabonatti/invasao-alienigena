@@ -16,8 +16,8 @@ class Placar:
 
     def preparar_placar(self):
         """Transforme o placar em uma imagem renderizada"""
-
-        str_placar = str(self.stats.pontuacao)
+        placar_arredondado = int(round(self.stats.pontuacao,-1))
+        str_placar = str(placar_arredondado)
         self.imagem = self.fonte.render(
             str_placar, True, self.cor, self.configuracoes.cor_background)
         

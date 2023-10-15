@@ -62,6 +62,7 @@ class InvasaoAlienigena:
     
     def reagir_fim_jogo(self):
             self.stats.resetar_stats()
+            self.placar.preparar_placar()
             self.configuracoes.jogo_ativo = False
 
 
@@ -115,9 +116,14 @@ class InvasaoAlienigena:
         ambos os membros de cada grupo envolvido na colisão serão 
         removidos."""
         colisoes = pygame.sprite.groupcollide(
-            self.aliens, self.lasers, True, True)
+            self.lasers, self.aliens, True, True)
         if colisoes:
-            self.stats.pontuacao += self.configuracoes.ponto_por_alien
+            for aliens in colisoes.values():
+                self.stats.pontuacao += (self.configuracoes.ponto_por_alien *
+                                         len(aliens)) 
+            if len(self.aliens) == 0:
+                self.configuracoes.nivel += 1
+                self.configuracoes.aumentar_velocidade()
             self.placar.preparar_placar()
 
 
