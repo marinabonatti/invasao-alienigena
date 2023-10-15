@@ -5,7 +5,6 @@ from eventos import Eventos
 from nave import Nave
 from aliens import Aliens
 from stats_jogo import StatsJogo
-from fim_jogo import FimJogo
 from placar import Placar
 
 class InvasaoAlienigena:
