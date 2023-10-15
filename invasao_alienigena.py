@@ -47,6 +47,30 @@ class InvasaoAlienigena:
                     self._criar_alien(n_alien, coluna)
         self.aliens.draw(self.tela)
 
+    def _verificar_bordas_frota(self):
+        """Reage adequadamente caso algum alien tenha atingido a borda
+        da tela."""
+
+        for alien in self.aliens.sprites():
+            if alien.verificar_bordas():
+                self._mudar_direcao_frota()
+                break
+
+    def _mudar_direcao_frota(self):
+        """Faz com que a frota inteira desça na tela de acordo com a 
+        velocidade_y_alien estabelecida em configurações, além de mudar
+        a direção da frota."""
+
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.configuracoes.velocidade_y_alien
+        self.configuracoes.direcao_frota *= -1
+
+    def _atualizar_aliens(self):
+        """Verifica se uma frota está em alguma borda e, em seguida, faz
+        a atualização necessária nas posições de cada alien da frota."""
+        self._verificar_bordas_frota()
+        self.aliens.update()
+
 
     def rodar_jogo(self):
         """Executa o loop principal do jogo."""
@@ -68,7 +92,7 @@ class InvasaoAlienigena:
                 self.nave.desenhar()
                 self.nave.atualizar_pos_nave(self)
                 self.criar_frota_alienigena()
-                self.aliens.update()
+                self._atualizar_aliens()
                 for laser in self.lasers.sprites():
                     laser.desenhar()
                 self.lasers.update(self.lasers)
