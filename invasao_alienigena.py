@@ -76,8 +76,6 @@ class InvasaoAlienigena:
             self.stats.highscore = int(round(self.stats.pontuacao,-1))
         self.stats.resetar_stats()
         self.placar.preparar_placar()
-        self.placar.preparar_nivel()
-        self.placar.preparar_highscore()
         self.configuracoes.jogo_ativo = False
 
     def _verificar_bordas_frota(self):
@@ -99,7 +97,6 @@ class InvasaoAlienigena:
             alien._verificar_alien_terra()
             break
 
-
     def _atualizar_aliens(self):
         """Verifica se uma frota está em alguma borda e, em seguida, faz
         a atualização necessária nas posições de cada alien da frota."""
@@ -113,7 +110,7 @@ class InvasaoAlienigena:
             self.botao_start = BotaoStart(self)
             self.botao_start.desenhar()
 
-    def atualizar_tela(self):
+    def atualizar_jogo(self):
         """Roda as funcionalidades do jogo caso ele esteja ativo,
         atualizando a tela conforme necessário."""
         if self.configuracoes.jogo_ativo:
@@ -129,7 +126,6 @@ class InvasaoAlienigena:
             if self.validar_fim_jogo():
                 self.reagir_fim_jogo()
 
-
     def rodar_jogo(self):
         """Executa o loop principal do jogo."""
 
@@ -139,10 +135,8 @@ class InvasaoAlienigena:
             self.tela.fill(self.configuracoes.cor_background, self.tela_rect)
 
             self.eventos.reagir_a_eventos(self)
-
             self.disponibilizar_start()
-
-            self.atualizar_tela()
+            self.atualizar_jogo()
 
             # Atualiza a tela com as últimas atualizações de display
             pygame.display.flip()

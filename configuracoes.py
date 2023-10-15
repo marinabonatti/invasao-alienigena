@@ -30,8 +30,8 @@ class Configuracoes:
         self.nivel = 1
         self.naves_restantes = 2
         self.highscore = 0
-
         self.escala_aceleracao = 1.1
+        
         self.inicializar_configuracoes_dinamicas()
 
     def inicializar_configuracoes_dinamicas(self):
@@ -44,7 +44,8 @@ class Configuracoes:
         self.direcao_frota = 1 # Direita (1) Esquerda (-1)
 
     def aumentar_velocidade(self):
-        """Aumenta configurações de velocidade."""
+        """Aumenta configurações de velocidade de acordo com a escala
+        estaelecida."""
         self.velocidade_nave *= self.escala_aceleracao
         self.velocidade_laser *= self.escala_aceleracao
         self.velocidade_x_alien *= self.escala_aceleracao

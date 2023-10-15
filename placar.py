@@ -7,6 +7,8 @@ class Placar:
     por pontuação, highscore, nível e naves restantes."""
 
     def __init__(self, jogo):
+        """Inicializa a classe, acessa os atributos necessários de 'jogo'
+        e prepara o placar."""
         self.tela = jogo.tela
         self.tela_rect = jogo.tela_rect
         self.stats = jogo.stats
@@ -20,10 +22,16 @@ class Placar:
         self.espacamento = self.configuracoes.espacamento_stats
         
         self.preparar_placar()
-        self.preparar_highscore()
-        self.preparar_nivel()
 
     def preparar_placar(self):
+        """Faz a preparação de pontuação, highscore e nível. O preparo
+        consiste em transformar os componentes do placar em imagens 
+        renderizadas, para que possam ser exibidas na tela."""
+        self._preparar_pontuacao()
+        self._preparar_highscore()
+        self._preparar_nivel()
+
+    def _preparar_pontuacao(self):
         """Transforma a pontuação em uma imagem renderizada"""
         placar_arredondado = int(round(self.stats.pontuacao,-1))
         str_placar = str(placar_arredondado)
@@ -35,7 +43,7 @@ class Placar:
         self.rect_placar.right = self.tela_rect.right - self.espacamento
         self.rect_placar.top = self.espacamento
 
-    def preparar_nivel(self):
+    def _preparar_nivel(self):
         """Transforma o nível em uma imagem renderizada."""
         str_nivel = f"LVL {self.stats.nivel}"
         tamanho_fonte = int(self.configuracoes.tamanho_stats * 0.75)
@@ -49,7 +57,7 @@ class Placar:
         self.rect_nivel.top = self.rect_placar.bottom
         self.rect_nivel.height -= espacamento
 
-    def preparar_highscore(self):
+    def _preparar_highscore(self):
         """Transforma o highscore em uma imagem renderizada."""
         str_highscore = str(self.stats.highscore)
         self.imagem_highscore = self.fonte.render(
@@ -60,6 +68,8 @@ class Placar:
         self.rect_highscore.top = self.espacamento
 
     def preparar_naves_restantes(self):
+        """Cria naves de acordo com a quantidade de naves restantes em
+        stats, faz o posicionamento na tela e o desenho de cada uma."""
         self.naves_restantes = Group()
         for n_nave in range(self.stats.naves_restantes):
             nave = Nave(self.jogo)
