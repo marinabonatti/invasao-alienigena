@@ -10,7 +10,8 @@ class Placar:
         self.configuracoes = jogo.configuracoes
 
         self.cor = (249, 247, 248)
-        self.fonte = pygame.font.SysFont(None, 48)
+        self.tamanho_fonte = int(self.configuracoes.tamanho_stats)
+        self.fonte = pygame.font.SysFont(None, self.tamanho_fonte)
         
         self.preparar_placar()
 
@@ -23,9 +24,10 @@ class Placar:
         
         self.rect = self.imagem.get_rect()
 
-        espacamento = self.tela_rect.height // 200
+        espacamento = self.configuracoes.espacamento_stats
         self.rect.right = self.tela_rect.right - espacamento
         self.rect.top = espacamento
+        
 
     def mostrar_placar(self):
         """Desenha o placar na tela."""

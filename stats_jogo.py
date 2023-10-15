@@ -5,6 +5,7 @@ class StatsJogo:
     def __init__(self, jogo):
         self.configuracoes = jogo.configuracoes
         self.pontuacao = self.configuracoes
+        self.nivel = self.configuracoes.nivel
         self.resetar_stats()
 
     def resetar_stats(self):

@@ -11,6 +11,8 @@ class Configuracoes:
         self.tela = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
         self.tela_rect = self.tela.get_rect()
         self.cor_background = (17,23,49)
+        self.espacamento_stats = self.tela_rect.height // 70
+        self.tamanho_stats = self.tela_rect.height // 15
 
         # Flags disponíveis
         self.jogo_ativo = False
@@ -36,8 +38,8 @@ class Configuracoes:
         """Inicializa configurações que mudam ao longo da partida."""
         self.velocidade_nave = self.tela_rect.width // 500
         self.velocidade_laser = self.tela_rect.height // 500
-        self.velocidade_x_alien = self.tela_rect.width // 400
-        self.velocidade_y_alien = self.tela_rect.height // 50
+        self.velocidade_x_alien = self.tela_rect.width // 700 # 400
+        self.velocidade_y_alien = self.tela_rect.height // 100 # 50
         self.ponto_por_alien = 50
         self.direcao_frota = 1 # Direita (1) Esquerda (-1)
 
