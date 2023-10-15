@@ -41,6 +41,51 @@ class Aliens(Sprite):
             alien.rect.y += self.configuracoes.velocidade_y_alien
         self.configuracoes.direcao_frota *= -1
         
+    def _verificar_colisao_aliens_nave(self):
+        """Verifica se houve colisão entre algum alien e a nave. Se sim,
+        paralisa o jogo - pois o jogador acabou de perder uma vida."""
+        if pygame.sprite.spritecollideany(self.jogo.nave, self.jogo.aliens):
+            self.jogo.stats.naves_restantes -= 1
+            self.jogo.placar.preparar_naves_restantes()
+            self.jogo.aliens.empty()
+            self.jogo.lasers.empty()
+
+            self.jogo.criar_frota_alienigena()
+            self.jogo.nave.centralizar_nave()
+
+            pygame.time.wait(1000 * 5)
+
+    def _verificar_alien_terra(self):
+        """Verifica se algum alien encostou no chão. Se sim, paralisa o
+        jogo - pois o jogador acabou de perder uma vida."""
+        for alien in self.jogo.aliens.sprites():
+            if alien.rect.bottom >= self.jogo.tela_rect.bottom:
+                self.jogo.stats.naves_restantes -= 1
+                self.jogo.placar.preparar_naves_restantes()
+                self.jogo.aliens.empty()
+                self.jogo.lasers.empty()
+
+                self.jogo.criar_frota_alienigena()
+                self.jogo.nave.centralizar_nave()
+
+                pygame.time.wait(1000 * 5)
+                break
+
+    def _verificar_colisao_aliens_lasers(self):
+        """Verifica se houve colisão entre aliens e lasers. Se sim,
+        ambos os membros de cada grupo envolvido na colisão serão 
+        removidos."""
+        colisoes = pygame.sprite.groupcollide(
+            self.jogo.lasers, self.jogo.aliens, True, True)
+        if colisoes:
+            for aliens in colisoes.values():
+                self.jogo.stats.pontuacao += (self.jogo.configuracoes.ponto_por_alien *
+                                         len(aliens)) 
+            if len(self.jogo.aliens) == 0:
+                self.jogo.stats.nivel += 1
+                self.jogo.placar.preparar_nivel()
+                self.jogo.configuracoes.aumentar_velocidade()
+            self.jogo.placar.preparar_placar()
 
 
         

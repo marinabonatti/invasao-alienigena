@@ -78,53 +78,13 @@ class InvasaoAlienigena:
             if alien.verificar_bordas():
                 alien._mudar_direcao_frota()
                 break
-
-    def _verificar_colisao_aliens_nave(self):
-        """Verifica se houve colisão entre algum alien e a nave. Se sim,
-        paralisa o jogo - pois o jogador acabou de perder uma vida."""
-        if pygame.sprite.spritecollideany(self.nave, self.aliens):
-            self.stats.naves_restantes -= 1
-            self.placar.preparar_naves_restantes()
-            self.aliens.empty()
-            self.lasers.empty()
-
-            self.criar_frota_alienigena()
-            self.nave.centralizar_nave()
-
-            pygame.time.wait(1000 * 5)
-
-    def _verificar_alien_terra(self):
-        """Verifica se algum alien encostou no chão. Se sim, paralisa o
-        jogo - pois o jogador acabou de perder uma vida."""
+    
+    def verificar_colisoes(self):
         for alien in self.aliens.sprites():
-            if alien.rect.bottom >= self.tela_rect.bottom:
-                self.stats.naves_restantes -= 1
-                self.placar.preparar_naves_restantes()
-                self.aliens.empty()
-                self.lasers.empty()
-
-                self.criar_frota_alienigena()
-                self.nave.centralizar_nave()
-
-                pygame.time.wait(1000 * 5)
-                break
-
-    def _verificar_colisao_aliens_lasers(self):
-        """Verifica se houve colisão entre aliens e lasers. Se sim,
-        ambos os membros de cada grupo envolvido na colisão serão 
-        removidos."""
-        colisoes = pygame.sprite.groupcollide(
-            self.lasers, self.aliens, True, True)
-        if colisoes:
-            for aliens in colisoes.values():
-                self.stats.pontuacao += (self.configuracoes.ponto_por_alien *
-                                         len(aliens)) 
-            if len(self.aliens) == 0:
-                self.stats.nivel += 1
-                self.placar.preparar_nivel()
-                self.configuracoes.aumentar_velocidade()
-            self.placar.preparar_placar()
-
+            alien._verificar_colisao_aliens_lasers()
+            alien._verificar_colisao_aliens_nave()
+            alien._verificar_alien_terra()
+            break
 
 
     def _atualizar_aliens(self):
@@ -132,8 +92,7 @@ class InvasaoAlienigena:
         a atualização necessária nas posições de cada alien da frota."""
         self._verificar_bordas_frota()
         self.aliens.update()
-        self._verificar_colisao_aliens_nave()
-        self._verificar_alien_terra()
+        self.verificar_colisoes()
 
 
     def rodar_jogo(self):
@@ -162,7 +121,6 @@ class InvasaoAlienigena:
                 for laser in self.lasers.sprites():
                     laser.desenhar()
                 self.lasers.update(self.lasers)
-                self._verificar_colisao_aliens_lasers()
                 if self.validar_fim_jogo():
                     self.reagir_fim_jogo()
 
