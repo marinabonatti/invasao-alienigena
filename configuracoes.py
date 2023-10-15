@@ -19,13 +19,14 @@ class Configuracoes:
         
         # Atributos nave
         self.velocidade_nave = self.tela_rect.width // 500
-        self.naves_restantes = 1
+        self.naves_restantes = 2
 
         # Atributos lasers
         self.largura_laser = self.tela_rect.width // 300
         self.altura_laser = self.tela_rect.height // 70
         self.cor_laser = (255,74,173)
         self.velocidade_laser = self.tela_rect.height // 500
+        self.limite_lasers = 3
 
         # Atributos aliens
         self.velocidade_x_alien = self.tela_rect.width // 400

@@ -5,6 +5,7 @@ from eventos import Eventos
 from nave import Nave
 from aliens import Aliens
 from stats_jogo import StatsJogo
+from fim_jogo import FimJogo
 
 class InvasaoAlienigena:
     """Faz a gestão dos atributos e métodos necessários para a execução
@@ -27,6 +28,7 @@ class InvasaoAlienigena:
         self.nave = Nave(self)
         self.lasers = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
+        self.fim_jogo = FimJogo(self)
 
     def _criar_alien(self, n_alien, coluna):
         alien = Aliens(self)
@@ -53,8 +55,12 @@ class InvasaoAlienigena:
 
     def validar_fim_jogo(self):
         if self.stats.naves_restantes == 0:
+            return True
+    
+    def reagir_fim_jogo(self):
             self.stats.resetar_stats()
             self.configuracoes.jogo_ativo = False
+
 
     def _verificar_bordas_frota(self):
         """Reage adequadamente caso algum alien tenha atingido a borda
@@ -84,7 +90,7 @@ class InvasaoAlienigena:
             self.criar_frota_alienigena()
             self.nave.centralizar_nave()
 
-            pygame.time.wait(1000 * 7)
+            pygame.time.wait(1000 * 5)
 
     def _verificar_alien_terra(self):
         """Verifica se algum alien encostou no chão. Se sim, paralisa o
@@ -98,7 +104,7 @@ class InvasaoAlienigena:
                 self.criar_frota_alienigena()
                 self.nave.centralizar_nave()
 
-                pygame.time.wait(1000 * 7)
+                pygame.time.wait(1000 * 5)
                 break
 
     def _verificar_colisao_aliens_lasers(self):
@@ -142,7 +148,8 @@ class InvasaoAlienigena:
                     laser.desenhar()
                 self.lasers.update(self.lasers)
                 self._verificar_colisao_aliens_lasers()
-                self.validar_fim_jogo()
+                if self.validar_fim_jogo():
+                    self.reagir_fim_jogo()
 
             # Atualiza a tela com as últimas atualizações de display
             pygame.display.flip()

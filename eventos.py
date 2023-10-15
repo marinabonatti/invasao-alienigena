@@ -30,7 +30,8 @@ class Eventos:
         elif evento.key == pygame.K_RIGHT:
             jogo.configuracoes.movimento_direita = True
         elif evento.key == pygame.K_SPACE:
-            self._atira_laser(jogo)
+            if len(jogo.lasers) < self.configuracoes.limite_lasers:
+                self._atira_laser(jogo)
 
     def _verificar_eventos_keyup(self, evento, jogo):
         if evento.key == pygame.K_LEFT:

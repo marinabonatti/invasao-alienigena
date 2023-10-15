@@ -8,4 +8,5 @@ class StatsJogo:
 
     def resetar_stats(self):
         self.naves_restantes = self.configuracoes.naves_restantes
+    
         
