@@ -7,7 +7,6 @@ from aliens import Aliens
 from stats_jogo import StatsJogo
 from fim_jogo import FimJogo
 from placar import Placar
-from nivel import Nivel
 
 class InvasaoAlienigena:
     """Faz a gestão dos atributos e métodos necessários para a execução
@@ -28,7 +27,6 @@ class InvasaoAlienigena:
         # Instancia classes necessárias
         self.stats = StatsJogo(self)
         self.placar = Placar(self)
-        self.nivel = Nivel(self)
         self.eventos = Eventos(self)
         self.nave = Nave(self)
         self.lasers = pygame.sprite.Group()
@@ -67,7 +65,7 @@ class InvasaoAlienigena:
                 self.stats.highscore = int(round(self.stats.pontuacao,-1))
             self.stats.resetar_stats()
             self.placar.preparar_placar()
-            self.nivel.preparar_nivel()
+            self.placar.preparar_nivel()
             self.placar.preparar_highscore()
             self.configuracoes.jogo_ativo = False
 
@@ -131,7 +129,7 @@ class InvasaoAlienigena:
                                          len(aliens)) 
             if len(self.aliens) == 0:
                 self.stats.nivel += 1
-                self.nivel.preparar_nivel()
+                self.placar.preparar_nivel()
                 self.configuracoes.aumentar_velocidade()
             self.placar.preparar_placar()
 
@@ -164,7 +162,7 @@ class InvasaoAlienigena:
             # Roda as funcionalidades do jogo caso ele esteja ativo
             elif self.configuracoes.jogo_ativo:
                 self.placar.mostrar_placar()
-                self.nivel.mostrar_nivel()
+                self.placar.mostrar_nivel()
                 self.placar.mostrar_highscore()
                 self.placar.preparar_naves_restantes()
                 self.nave.desenhar()
