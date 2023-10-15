@@ -72,4 +72,4 @@ class Placar:
         """Desenha a pontuação, o highscore e o nível na tela."""
         self.tela.blit(self.imagem_placar, self.rect_placar)
         self.tela.blit(self.imagem_highscore, self.rect_highscore)
-        self.tela.blit(self.imagem_nivel,self.rect_nivel)
+        self.tela.blit(self.imagem_nivel,self.rect_nivel) 

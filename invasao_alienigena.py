@@ -76,16 +76,8 @@ class InvasaoAlienigena:
 
         for alien in self.aliens.sprites():
             if alien.verificar_bordas():
-                self._mudar_direcao_frota()
+                alien._mudar_direcao_frota()
                 break
-
-    def _mudar_direcao_frota(self):
-        """Faz com que a frota inteira desça na tela de acordo com a 
-        velocidade_y_alien estabelecida em configurações, além de mudar
-        a direção da frota."""
-        for alien in self.aliens.sprites():
-            alien.rect.y += self.configuracoes.velocidade_y_alien
-        self.configuracoes.direcao_frota *= -1
 
     def _verificar_colisao_aliens_nave(self):
         """Verifica se houve colisão entre algum alien e a nave. Se sim,

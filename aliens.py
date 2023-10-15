@@ -11,6 +11,7 @@ class Aliens(Sprite):
         self.tela = jogo.tela
         self.tela_rect = self.tela.get_rect()
         self.configuracoes = jogo.configuracoes
+        self.jogo = jogo
 
         # Cria image e rect
         self.image = pygame.image.load("imagens/alien.bmp")
@@ -31,6 +32,14 @@ class Aliens(Sprite):
 
         if self.rect.right >= self.tela_rect.right or self.rect.left <= 0:
             return True
+        
+    def _mudar_direcao_frota(self):
+        """Faz com que a frota inteira desça na tela de acordo com a 
+        velocidade_y_alien estabelecida em configurações, além de mudar
+        a direção da frota."""
+        for alien in self.jogo.aliens.sprites():
+            alien.rect.y += self.configuracoes.velocidade_y_alien
+        self.configuracoes.direcao_frota *= -1
         
 
 
