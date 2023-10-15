@@ -94,6 +94,7 @@ class InvasaoAlienigena:
         paralisa o jogo - pois o jogador acabou de perder uma vida."""
         if pygame.sprite.spritecollideany(self.nave, self.aliens):
             self.stats.naves_restantes -= 1
+            self.placar.preparar_naves_restantes()
             self.aliens.empty()
             self.lasers.empty()
 
@@ -108,6 +109,7 @@ class InvasaoAlienigena:
         for alien in self.aliens.sprites():
             if alien.rect.bottom >= self.tela_rect.bottom:
                 self.stats.naves_restantes -= 1
+                self.placar.preparar_naves_restantes()
                 self.aliens.empty()
                 self.lasers.empty()
 
@@ -164,6 +166,7 @@ class InvasaoAlienigena:
                 self.placar.mostrar_placar()
                 self.nivel.mostrar_nivel()
                 self.placar.mostrar_highscore()
+                self.placar.preparar_naves_restantes()
                 self.nave.desenhar()
                 self.nave.atualizar_pos_nave(self)
                 self.criar_frota_alienigena()

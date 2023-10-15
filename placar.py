@@ -1,4 +1,6 @@
 import pygame
+from pygame.sprite import Group
+from nave import Nave
 
 class Placar:
     """Responsável por reportar o placar da partida."""
@@ -8,6 +10,7 @@ class Placar:
         self.tela_rect = jogo.tela_rect
         self.stats = jogo.stats
         self.configuracoes = jogo.configuracoes
+        self.jogo = jogo
 
         self.cor = (249, 247, 248)
         self.tamanho_fonte = int(self.configuracoes.tamanho_stats)
@@ -16,6 +19,7 @@ class Placar:
         
         self.preparar_placar()
         self.preparar_highscore()
+        self.preparar_naves_restantes
 
     def preparar_placar(self):
         """Transforma o placar em uma imagem renderizada"""
@@ -39,7 +43,15 @@ class Placar:
         self.rect_highscore.center = self.tela_rect.center
         self.rect_highscore.top = self.espacamento
 
-        
+    def preparar_naves_restantes(self):
+        self.naves_restantes = Group()
+        for n_nave in range(self.stats.naves_restantes):
+            nave = Nave(self.jogo)
+            nave.rect.x = self.espacamento + (n_nave * nave.rect.width)
+            nave.rect.y = self.espacamento
+            self.naves_restantes.add(nave)
+        self.naves_restantes.draw(self.tela)
+
     def mostrar_placar(self):
         """Desenha o placar na tela."""
         self.tela.blit(self.imagem_placar, self.rect_placar)
