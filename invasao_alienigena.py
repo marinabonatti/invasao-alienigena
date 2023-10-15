@@ -6,6 +6,7 @@ from nave import Nave
 from aliens import Aliens
 from stats_jogo import StatsJogo
 from fim_jogo import FimJogo
+from placar import Placar
 
 class InvasaoAlienigena:
     """Faz a gestão dos atributos e métodos necessários para a execução
@@ -16,6 +17,7 @@ class InvasaoAlienigena:
         as outras classes necessárias para o andamento do jogo."""
 
         # Obtém as configurações
+        pygame.init()
         self.configuracoes = Configuracoes()
 
         # Cria o display
@@ -24,6 +26,7 @@ class InvasaoAlienigena:
 
         # Instancia classes necessárias
         self.stats = StatsJogo(self)
+        self.placar = Placar(self)
         self.eventos = Eventos(self)
         self.nave = Nave(self)
         self.lasers = pygame.sprite.Group()
@@ -111,7 +114,11 @@ class InvasaoAlienigena:
         """Verifica se houve colisão entre aliens e lasers. Se sim,
         ambos os membros de cada grupo envolvido na colisão serão 
         removidos."""
-        pygame.sprite.groupcollide(self.aliens, self.lasers, True, True)
+        colisoes = pygame.sprite.groupcollide(
+            self.aliens, self.lasers, True, True)
+        if colisoes:
+            self.stats.pontuacao += self.configuracoes.ponto_por_alien
+            self.placar.preparar_placar()
 
 
     def _atualizar_aliens(self):
@@ -140,6 +147,7 @@ class InvasaoAlienigena:
 
             # Roda as funcionalidades do jogo caso ele esteja ativo
             elif self.configuracoes.jogo_ativo:
+                self.placar.mostrar_placar()
                 self.nave.desenhar()
                 self.nave.atualizar_pos_nave(self)
                 self.criar_frota_alienigena()
