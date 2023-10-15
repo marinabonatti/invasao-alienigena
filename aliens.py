@@ -45,30 +45,14 @@ class Aliens(Sprite):
         """Verifica se houve colisão entre algum alien e a nave. Se sim,
         paralisa o jogo - pois o jogador acabou de perder uma vida."""
         if pygame.sprite.spritecollideany(self.jogo.nave, self.jogo.aliens):
-            self.jogo.stats.naves_restantes -= 1
-            self.jogo.placar.preparar_naves_restantes()
-            self.jogo.aliens.empty()
-            self.jogo.lasers.empty()
-
-            self.jogo.criar_frota_alienigena()
-            self.jogo.nave.centralizar_nave()
-
-            pygame.time.wait(1000 * 5)
+            self.jogo.stats.perder_vida()
 
     def _verificar_alien_terra(self):
         """Verifica se algum alien encostou no chão. Se sim, paralisa o
         jogo - pois o jogador acabou de perder uma vida."""
         for alien in self.jogo.aliens.sprites():
             if alien.rect.bottom >= self.jogo.tela_rect.bottom:
-                self.jogo.stats.naves_restantes -= 1
-                self.jogo.placar.preparar_naves_restantes()
-                self.jogo.aliens.empty()
-                self.jogo.lasers.empty()
-
-                self.jogo.criar_frota_alienigena()
-                self.jogo.nave.centralizar_nave()
-
-                pygame.time.wait(1000 * 5)
+                self.jogo.stats.perder_vida()
                 break
 
     def _verificar_colisao_aliens_lasers(self):
