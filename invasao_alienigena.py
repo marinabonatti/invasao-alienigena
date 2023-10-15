@@ -51,6 +51,11 @@ class InvasaoAlienigena:
                     self._criar_alien(n_alien, coluna)
         self.aliens.draw(self.tela)
 
+    def validar_fim_jogo(self):
+        if self.stats.naves_restantes == 0:
+            self.stats.resetar_stats()
+            self.configuracoes.jogo_ativo = False
+
     def _verificar_bordas_frota(self):
         """Reage adequadamente caso algum alien tenha atingido a borda
         da tela."""
@@ -137,6 +142,7 @@ class InvasaoAlienigena:
                     laser.desenhar()
                 self.lasers.update(self.lasers)
                 self._verificar_colisao_aliens_lasers()
+                self.validar_fim_jogo()
 
             # Atualiza a tela com as últimas atualizações de display
             pygame.display.flip()
