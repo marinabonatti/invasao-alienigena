@@ -4,12 +4,15 @@ from botao_start import BotaoStart
 from eventos import Eventos
 from nave import Nave
 from aliens import Aliens
+from time import sleep
 
 class InvasaoAlienigena:
-    """Inicializa e faz a gestão dos atributos e métodos do jogo, assim
-    como instancia as classes necessárias."""
+    """Faz a gestão dos atributos e métodos necessários para a execução
+    do jogo."""
 
     def __init__(self):
+        """Inicializa a classe, faz a gestão dos atributos e instancia
+        as outras classes necessárias para o andamento do jogo."""
 
         # Obtém as configurações
         self.configuracoes = Configuracoes()
@@ -60,16 +63,37 @@ class InvasaoAlienigena:
         """Faz com que a frota inteira desça na tela de acordo com a 
         velocidade_y_alien estabelecida em configurações, além de mudar
         a direção da frota."""
-
         for alien in self.aliens.sprites():
             alien.rect.y += self.configuracoes.velocidade_y_alien
         self.configuracoes.direcao_frota *= -1
+
+    def _verificar_colisao_aliens_nave(self):
+        """Verifica se houve colisão entre algum alien e a nave. Se sim,
+        paralisa o jogo - pois o jogador acabou de perder uma vida."""
+        if pygame.sprite.spritecollideany(self.nave, self.aliens):
+            pygame.time.wait(1000 * 7)
+
+    def _verificar_alien_terra(self):
+        """Verifica se algum alien encostou no chão. Se sim, paralisa o
+        jogo - pois o jogador acabou de perder uma vida."""
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom == self.tela_rect.bottom:
+                pygame.time.wait(1000 * 7)
+            
+    def _verificar_colisao_aliens_lasers(self):
+        """Verifica se houve colisão entre aliens e lasers. Se sim,
+        ambos os membros de cada grupo envolvido na colisão serão 
+        removidos."""
+        pygame.sprite.groupcollide(self.aliens, self.lasers, True, True)
+
 
     def _atualizar_aliens(self):
         """Verifica se uma frota está em alguma borda e, em seguida, faz
         a atualização necessária nas posições de cada alien da frota."""
         self._verificar_bordas_frota()
         self.aliens.update()
+        self._verificar_colisao_aliens_nave()
+        self._verificar_alien_terra()
 
 
     def rodar_jogo(self):
@@ -96,6 +120,7 @@ class InvasaoAlienigena:
                 for laser in self.lasers.sprites():
                     laser.desenhar()
                 self.lasers.update(self.lasers)
+                self._verificar_colisao_aliens_lasers()
 
             # Atualiza a tela com as últimas atualizações de display
             pygame.display.flip()
