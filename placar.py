@@ -17,7 +17,7 @@ class Placar:
 
         self.cor = (249, 247, 248)
         self.tamanho_fonte = int(self.configuracoes.tamanho_stats)
-        self.tamanho_fonte_menor = int(self.configuracoes.tamanho_stats * 0.75)
+        self.tamanho_fonte_menor = int(self.configuracoes.tamanho_stats * 0.60)
         self.fonte = pygame.font.SysFont(None, self.tamanho_fonte)
         self.espacamento = self.configuracoes.espacamento_stats
         
@@ -47,8 +47,8 @@ class Placar:
         """Transforma o nível em uma imagem renderizada."""
         str_nivel = f"LVL {self.stats.nivel}"
         tamanho_fonte = int(self.configuracoes.tamanho_stats * 0.75)
-        fonte = pygame.font.SysFont(None, tamanho_fonte)
-        self.imagem_nivel = fonte.render(
+        self.fonte_menor = pygame.font.SysFont(None, tamanho_fonte)
+        self.imagem_nivel = self.fonte_menor.render(
             str_nivel, True, self.cor, self.configuracoes.cor_background)
         self.rect_nivel = self.imagem_nivel.get_rect()
 
@@ -77,6 +77,17 @@ class Placar:
             nave.rect.y = self.espacamento
             self.naves_restantes.add(nave)
         self.naves_restantes.draw(self.tela)
+
+    def mostrar_highscore_txt(self):
+        """Transforma a palavra 'highscore' em uma imagem renderizada e
+        a desenha na tela."""
+        str = "HIGH SCORE"
+        self.imagem_highscore_txt = self.fonte_menor.render(
+            str, True, self.cor, self.configuracoes.cor_background)
+        self.rect_highscore_txt = self.imagem_highscore_txt.get_rect()
+        self.rect_highscore_txt.midtop = (self.rect_highscore.midbottom)
+        self.rect_highscore_txt.y += self.espacamento
+        self.tela.blit(self.imagem_highscore_txt, self.rect_highscore_txt)
 
     def mostrar_placar(self):
         """Desenha a pontuação, o highscore e o nível na tela."""

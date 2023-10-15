@@ -28,9 +28,11 @@ class Configuracoes:
         # Atributos do jogo
         self.pontuacao = 0
         self.nivel = 1
-        self.naves_restantes = 2
-        self.highscore = 0
+        self.naves_restantes = 3
         self.escala_aceleracao = 1.1
+        with open('highscore.txt') as f:
+            highscore = f.readlines()
+        self.highscore = int(highscore[0])
         
         self.inicializar_configuracoes_dinamicas()
 

@@ -74,6 +74,8 @@ class InvasaoAlienigena:
         se irá jogar novamente."""
         if self.stats.pontuacao > self.stats.highscore:
             self.stats.highscore = int(round(self.stats.pontuacao,-1))
+            with open ("highscore.txt", 'w') as f:
+                f.write(str(self.stats.highscore))
         self.stats.resetar_stats()
         self.placar.preparar_placar()
         self.configuracoes.jogo_ativo = False
@@ -115,6 +117,7 @@ class InvasaoAlienigena:
         atualizando a tela conforme necessário."""
         if self.configuracoes.jogo_ativo:
             self.placar.mostrar_placar()
+            self.placar.mostrar_highscore_txt()
             self.placar.preparar_naves_restantes()
             self.nave.desenhar()
             self.nave.atualizar_pos_nave(self)
