@@ -30,7 +30,6 @@ class InvasaoAlienigena:
         self.nave = Nave(self)
         self.lasers = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
-        self.fim_jogo = FimJogo(self)
 
     def _criar_alien(self, n_alien, coluna):
         """Cria um único alien, posiciona-o de acordo com os parâmetros
