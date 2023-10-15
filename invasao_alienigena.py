@@ -162,8 +162,6 @@ class InvasaoAlienigena:
             # Roda as funcionalidades do jogo caso ele esteja ativo
             elif self.configuracoes.jogo_ativo:
                 self.placar.mostrar_placar()
-                self.placar.mostrar_nivel()
-                self.placar.mostrar_highscore()
                 self.placar.preparar_naves_restantes()
                 self.nave.desenhar()
                 self.nave.atualizar_pos_nave(self)

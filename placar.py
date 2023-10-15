@@ -69,12 +69,7 @@ class Placar:
         self.naves_restantes.draw(self.tela)
 
     def mostrar_placar(self):
-        """Desenha o placar na tela."""
+        """Desenha a pontuação, o highscore e o nível na tela."""
         self.tela.blit(self.imagem_placar, self.rect_placar)
-    
-    def mostrar_highscore(self):
-        """Desenha o placar na tela."""
         self.tela.blit(self.imagem_highscore, self.rect_highscore)
-
-    def mostrar_nivel(self):
         self.tela.blit(self.imagem_nivel,self.rect_nivel)
