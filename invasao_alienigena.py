@@ -75,6 +75,7 @@ class InvasaoAlienigena:
             with open ("highscore.txt", 'w') as f:
                 f.write(str(self.stats.highscore))
         self.stats.resetar_stats()
+        self.configuracoes.inicializar_configuracoes_dinamicas()
         self.placar.preparar_placar()
         self.configuracoes.jogo_ativo = False
 

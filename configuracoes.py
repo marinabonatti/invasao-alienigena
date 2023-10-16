@@ -23,7 +23,7 @@ class Configuracoes:
         self.largura_laser = self.tela_rect.width // 300
         self.altura_laser = self.tela_rect.height // 70
         self.cor_laser = (255,74,173)
-        self.limite_lasers = 3
+        self.limite_lasers = 5
 
         # Atributos do jogo
         self.pontuacao = 0
@@ -38,10 +38,10 @@ class Configuracoes:
 
     def inicializar_configuracoes_dinamicas(self):
         """Inicializa configurações que mudam ao longo da partida."""
-        self.velocidade_nave = self.tela_rect.width // 500
-        self.velocidade_laser = self.tela_rect.height // 500
-        self.velocidade_x_alien = self.tela_rect.width // 400 # 400
-        self.velocidade_y_alien = self.tela_rect.height // 50 # 50
+        self.velocidade_nave = self.tela_rect.width // 200
+        self.velocidade_laser = self.tela_rect.height // 300
+        self.velocidade_x_alien = self.tela_rect.width // 200
+        self.velocidade_y_alien = self.tela_rect.height // 40 # 
         self.ponto_por_alien = 50
         self.direcao_frota = 1 # Direita (1) Esquerda (-1)
 
