@@ -24,31 +24,33 @@ __Técnicas utilizadas__
 
 O jogo foi desenvolvido usando as seguintes técnicas:
 
--Programação orientada a objeto
--Classes
--Herança
--Polimorfismo
--Estruturas de dados
--Requisitos
+<ul>
+<li>Programação orientada a objeto</li>
+<li>Classes</li>
+<li>Herança</li>
+<li>Polimorfismo</li>
+<li>Estruturas de dados</li>
+<li>Requisitos</li>
+</ul>
 
 __Requisitos__ 
 
 Para jogar o jogo, você precisará do seguinte requisito:
-
--Pygame 2.5.2
-
+<ul>
+<li>Pygame 2.5.2</li>
+</ul>
 O jogo foi desenvolvido usando o Python 3.11 (64-bit). Se você estiver usando uma versão diferente do Python, poderá ter problemas para executar o jogo.
 
 __Como instalar__
 
 Para instalar o jogo, siga estas etapas:
-
--Instale o Python 3.11 (64-bit).
--Instale o Pygame 2.5.2.
--Clone o repositório do jogo.
--Entre no diretório do jogo.
--Execute o jogo usando o seguinte comando: *python invasao_alienigena.py*
-
+<ul>
+<li>Instale o Python 3.11 (64-bit).</li>
+<li>Instale o Pygame 2.5.2.</li>
+<li>Clone o repositório do jogo.</li>
+<li>Entre no diretório do jogo.</li>
+<li>Execute o jogo usando o seguinte comando: python invasao_alienigena.py</li>
+</ul>
 
 __Créditos__
 
