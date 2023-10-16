@@ -6,7 +6,7 @@ Invasão Alienígena é um jogo simples desenvolvido em Python usando a bibliote
 
 __Como jogar__
 
-Ao executar o jogo, uma tela de início é exibida. Essa tela contém um botão "Play" que, ao ser clicado, inicia o jogo. 
+Ao executar o jogo, uma tela de início é exibida. Essa tela contém um botão "Start" que, ao ser clicado, inicia o jogo. 
 
 O jogador controla uma nave espacial que aparece na parte inferior da tela. Usando as teclas de direção,
 é possível mover a nave para a direita ou para a esquerda. Para atirar, basta pressionar a barra de espaço.
@@ -52,5 +52,10 @@ Para instalar o jogo, siga estas etapas:
 </ul>
 
 __Créditos__
+As imagens utilizadas nos componentes visuais do jogo e do icon estão disponíveis no site Flaticon:
 
-As imagens utilizadas no jogo foram criadas por max.icons e estão disponíveis no site *Flaticon*.
+<a href="https://www.flaticon.com/free-icons/spaceship" title="spaceship icons">Spaceship icons created by Iconic Panda - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/start-button" title="start button icons">Start button icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/shooting-star" title="shooting star icons">Shooting star icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ufo" title="Ufo icons">Ufo icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/rocket" title="rocket icons">Rocket icons created by Dimitry Miroliubov - Flaticon</a>

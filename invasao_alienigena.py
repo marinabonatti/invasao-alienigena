@@ -22,6 +22,9 @@ class InvasaoAlienigena:
         # Cria o display
         self.tela = self.configuracoes.tela 
         self.tela_rect = self.configuracoes.tela_rect
+        pygame.display.set_caption("Invasão Alienígena")
+        icon = pygame.image.load("imagens/icon.bmp")
+        pygame.display.set_icon(icon)
 
         # Instancia classes necessárias
         self.stats = StatsJogo(self)
