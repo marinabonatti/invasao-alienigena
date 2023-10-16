@@ -13,42 +13,43 @@ O jogador controla uma nave espacial que aparece na parte inferior da tela. Usan
 
 Assim que o jogo começa, uma frota alienígena aparece na tela. O jogador deve usar seus lasers para destruir todos os aliens. Uma nova frota, que se moverá mais rapidamente do que a anterior, irá aparecer sempre que o jogador destruir todos os aliens da frota existente.
 
-Se algum alienígena atingir a nave do jogador ou alcançar a parte inferior da tela, o jogador perderá uma vida. Se o jogador perder três vidas, o jogo terminará.
+Se algum alien atingir a nave do jogador ou alcançar a parte inferior da tela, o jogador perderá uma vida e a tela fica congelada por alguns segundos. A tela descongela com a nave reposicionada no centro e uma nova frota
+de aliens. Se o jogador perder três vidas, o jogo terminará.
 
 __Objetivos__
 
-O objetivo principal do projeto foi praticar a programação orientada a objeto. Além disso, o projeto foi desenvolvido com a intenção de exercitar desenvolvimento de um projeto mais longo, com um esboço definido de início e etapas a serem cumpridas até que se considerasse o projeto razoavelmente desenvolvido.
+O objetivo principal do projeto foi praticar a programação orientada a objeto. Além disso, o projeto foi desenvolvido com a intenção de exercitar o desenvolvimento de um projeto mais longo, com um esboço definido de início e etapas a serem cumpridas até que se considerasse o projeto razoavelmente desenvolvido.
 
 __Técnicas utilizadas__
 
 O jogo foi desenvolvido usando as seguintes técnicas:
 
-Programação orientada a objeto
-Classes
-Herança
-Polimorfismo
-Estruturas de dados
-Requisitos
+-Programação orientada a objeto
+-Classes
+-Herança
+-Polimorfismo
+-Estruturas de dados
+-Requisitos
 
 __Requisitos__ 
 
-Para jogar o jogo, você precisará dos seguintes requisitos:
+Para jogar o jogo, você precisará do seguinte requisito:
 
-Python 3.11 (64-bit)
-Pygame 2.5.2
+-Pygame 2.5.2
+
+O jogo foi desenvolvido usando o Python 3.11 (64-bit). Se você estiver usando uma versão diferente do Python, poderá ter problemas para executar o jogo.
 
 __Como instalar__
 
 Para instalar o jogo, siga estas etapas:
 
-Instale o Python 3.11 (64-bit).
-Instale o Pygame 2.5.2.
-Clone o repositório do jogo.
-Entre no diretório do jogo.
-Execute o jogo usando o seguinte comando:
-python invasao_alienigena.py
+-Instale o Python 3.11 (64-bit).
+-Instale o Pygame 2.5.2.
+-Clone o repositório do jogo.
+-Entre no diretório do jogo.
+-Execute o jogo usando o seguinte comando: *python invasao_alienigena.py*
 
 
 __Créditos__
 
-As imagens utilizadas no jogo foram criadas por max.icons e estão disponíveis no site Flaticon.
+As imagens utilizadas no jogo foram criadas por max.icons e estão disponíveis no site *Flaticon*.

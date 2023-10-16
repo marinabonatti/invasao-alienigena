@@ -29,7 +29,7 @@ class Configuracoes:
         self.pontuacao = 0
         self.nivel = 1
         self.naves_restantes = 3
-        self.escala_aceleracao = 1.1
+        self.escala_aceleracao = 1.25
         with open('highscore.txt') as f:
             highscore = f.readlines()
         self.highscore = int(highscore[0])
@@ -38,10 +38,10 @@ class Configuracoes:
 
     def inicializar_configuracoes_dinamicas(self):
         """Inicializa configurações que mudam ao longo da partida."""
-        self.velocidade_nave = self.tela_rect.width // 200
-        self.velocidade_laser = self.tela_rect.height // 300
-        self.velocidade_x_alien = self.tela_rect.width // 200
-        self.velocidade_y_alien = self.tela_rect.height // 40 # 
+        self.velocidade_nave = self.tela_rect.width // 400
+        self.velocidade_laser = self.tela_rect.height // 350
+        self.velocidade_x_alien = self.tela_rect.width // 400
+        self.velocidade_y_alien = self.tela_rect.height // 40
         self.ponto_por_alien = 50
         self.direcao_frota = 1 # Direita (1) Esquerda (-1)
 
