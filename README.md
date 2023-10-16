@@ -1,4 +1,4 @@
-**Invasão Alienígena**
+<b><u>Invasão Alienígena**</u></b>
 
 __Sobre__
 
@@ -35,12 +35,11 @@ O jogo foi desenvolvido usando as seguintes técnicas:
 
 __Requisitos__ 
 
-Para jogar o jogo, você precisará do seguinte requisito:
+Para jogar o jogo, você precisará dos seguintes requisitos:
 <ul>
 <li>Pygame 2.5.2</li>
+<li>O jogo foi desenvolvido usando o Python 3.11 (64-bit). Se você estiver usando uma versão diferente do Python, poderá ter problemas para executar o jogo.</li>
 </ul>
-O jogo foi desenvolvido usando o Python 3.11 (64-bit). Se você estiver usando uma versão diferente do Python, poderá ter problemas para executar o jogo.
-
 __Como instalar__
 
 Para instalar o jogo, siga estas etapas:
