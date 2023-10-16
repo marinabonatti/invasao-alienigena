@@ -53,9 +53,10 @@ Para instalar o jogo, siga estas etapas:
 
 __Créditos__
 As imagens utilizadas nos componentes visuais do jogo e do icon estão disponíveis no site Flaticon:
-
-<a href="https://www.flaticon.com/free-icons/spaceship" title="spaceship icons">Spaceship icons created by Iconic Panda - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/start-button" title="start button icons">Start button icons created by Freepik - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/shooting-star" title="shooting star icons">Shooting star icons created by Freepik - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/ufo" title="Ufo icons">Ufo icons created by Freepik - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/rocket" title="rocket icons">Rocket icons created by Dimitry Miroliubov - Flaticon</a>
+<ul>
+<li> <a href="https://www.flaticon.com/free-icons/spaceship" title="spaceship icons">Spaceship icons created by Iconic Panda - Flaticon</a></li>
+<li> <a href="https://www.flaticon.com/free-icons/start-button" title="start button icons">Start button icons created by Freepik - Flaticon</a></li>
+<li> <a href="https://www.flaticon.com/free-icons/shooting-star" title="shooting star icons">Shooting star icons created by Freepik - Flaticon</a></li>
+<li> <a href="https://www.flaticon.com/free-icons/ufo" title="Ufo icons">Ufo icons created by Freepik - Flaticon</a></li>
+<li> <a href="https://www.flaticon.com/free-icons/rocket" title="rocket icons">Rocket icons created by Dimitry Miroliubov - Flaticon</a></li>
+</ul>
