@@ -40,6 +40,7 @@ Para jogar o jogo, você precisará dos seguintes requisitos:
 <li>Pygame 2.5.2</li>
 <li>O jogo foi desenvolvido usando o Python 3.11 (64-bit). Se você estiver usando uma versão diferente do Python, poderá ter problemas para executar o jogo.</li>
 </ul>
+
 __Como instalar__
 
 Para instalar o jogo, siga estas etapas:
@@ -52,6 +53,7 @@ Para instalar o jogo, siga estas etapas:
 </ul>
 
 __Créditos__
+
 As imagens utilizadas nos componentes visuais do jogo e do icon estão disponíveis no site Flaticon:
 <ul>
 <li> <a href="https://www.flaticon.com/free-icons/spaceship" title="spaceship icons">Spaceship icons created by Iconic Panda - Flaticon</a></li>
