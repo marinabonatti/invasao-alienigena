@@ -1,4 +1,4 @@
-<b><u>Invasão Alienígena**</u></b>
+<b><u>Invasão Alienígena</u></b>
 
 __Sobre__
 

@@ -81,6 +81,7 @@ class InvasaoAlienigena:
         self.configuracoes.inicializar_configuracoes_dinamicas()
         self.placar.preparar_placar()
         self.configuracoes.jogo_ativo = False
+        pygame.mouse.set_visible(True)
 
     def _verificar_bordas_frota(self):
         """Reage adequadamente caso algum alien tenha atingido a borda
